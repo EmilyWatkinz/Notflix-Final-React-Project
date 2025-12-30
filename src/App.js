@@ -237,7 +237,6 @@ function ExplorePage() {
     fetchMovies(query, 1);
   };
 
-  // Handle pagination
   const handlePrevPage = () => {
     if (currentPage > 1) {
       const newPage = currentPage - 1;
@@ -255,7 +254,6 @@ function ExplorePage() {
     }
   };
 
-  // Handle sorting
   const handleSort = (e) => {
     const order = e.target.value;
     setSortOrder(order);
@@ -350,7 +348,6 @@ function ExplorePage() {
   );
 }
 
-// Main App Component with Router
 function AppContent() {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
@@ -362,10 +359,8 @@ function AppContent() {
       const currentScrollY = window.scrollY;
       
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down
         setShowNavbar(false);
       } else {
-        // Scrolling up
         setShowNavbar(true);
       }
       
