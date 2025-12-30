@@ -6,7 +6,6 @@ import './index.css';
 const API_KEY = 'd90bdc';
 const API_URL = 'https://www.omdbapi.com/';
 
-// Home Page Component
 function HomePage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
@@ -17,7 +16,6 @@ function HomePage() {
     const query = searchQuery.trim() || 'movie';
     setLoading(true);
     
-    // Brief delay to show loading state
     setTimeout(() => {
       navigate(`/explore?search=${encodeURIComponent(query)}`);
       setLoading(false);
@@ -54,7 +52,6 @@ function HomePage() {
   );
 }
 
-// Movie Detail Page Component
 function MovieDetailPage() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -171,7 +168,6 @@ function MovieDetailPage() {
   );
 }
 
-// Explore Page Component
 function ExplorePage() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -181,7 +177,6 @@ function ExplorePage() {
   const [sortOrder, setSortOrder] = useState('sort');
   const navigate = useNavigate();
 
-  // Fetch movies from OMDb API
   const fetchMovies = async (query = 'movie', page = 1) => {
     setLoading(true);
     try {
@@ -197,7 +192,6 @@ function ExplorePage() {
       if (response.data.Response === 'True') {
         let results = response.data.Search;
         
-        // Fetch detailed info for each movie to get year
         const detailedMovies = await Promise.all(
           results.map(async (movie) => {
             const details = await axios.get(API_URL, {
@@ -223,7 +217,6 @@ function ExplorePage() {
     setLoading(false);
   };
 
-  // Load default movies on mount
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const searchParam = urlParams.get('search');
@@ -236,7 +229,6 @@ function ExplorePage() {
     }
   }, []);
 
-  // Handle search form submission
   const handleSearch = (e) => {
     e.preventDefault();
     const query = searchQuery.trim() || 'movie';
@@ -244,7 +236,6 @@ function ExplorePage() {
     fetchMovies(query, 1);
   };
 
-  // Handle pagination
   const handlePrevPage = () => {
     if (currentPage > 1) {
       const newPage = currentPage - 1;
@@ -262,7 +253,6 @@ function ExplorePage() {
     }
   };
 
-  // Handle sorting
   const handleSort = (e) => {
     const order = e.target.value;
     setSortOrder(order);
@@ -357,7 +347,6 @@ function ExplorePage() {
   );
 }
 
-// Main App Component with Router
 function AppContent() {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
@@ -369,10 +358,8 @@ function AppContent() {
       const currentScrollY = window.scrollY;
       
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down
         setShowNavbar(false);
       } else {
-        // Scrolling up
         setShowNavbar(true);
       }
       

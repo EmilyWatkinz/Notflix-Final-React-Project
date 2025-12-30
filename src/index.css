@@ -673,7 +673,6 @@ body {
     .footer-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
 
-/* Movie Detail Page Styles */
 .movie-detail-section {
     padding: 2rem;
     min-height: 70vh;
