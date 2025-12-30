@@ -1,0 +1,73 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notflix</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="Netflix.png" alt="Notflix Logo" class="logo-image">
+            </div>
+            <ul class="nav-links">
+                <li><a class="nav-disabled" aria-disabled="true" tabindex="-1" title="Not available">About</a></li>
+                <li><a href="#explore">Explore</a></li>
+                <li><a class="nav-disabled" aria-disabled="true" tabindex="-1" title="Not available">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" role="banner">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Welcome to Notflix</h1>
+                <p>Discover movies and shows curated just for you.</p>
+                <a class="hero-cta" href="#explore">Explore Now</a>
+            </div>
+        </div>
+    </section>
+    <section id="explore" class="explore-section">
+        <div class="explore-container">
+            <h2>Explore</h2>
+
+            <div class="search-filter-row">
+                <form id="search-form" class="search-form" role="search" aria-label="Search movies">
+                    <input id="search-input" class="search-input" type="search" placeholder="Search movies, e.g. Inception" aria-label="Search query">
+                    <button type="submit" class="btn search-btn">Search</button>
+                </form>
+
+                <div class="filter-controls" aria-label="Filter movies">
+                    <label for="sort-year" class="visually-hidden">Sort by year</label>
+                    <select id="sort-year" class="sort-select" aria-label="Sort by year">
+                        <option value="sort">Sort</option>
+                        <option value="oldest">Oldest to Newest</option>
+                        <option value="newest">Newest to Oldest</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="loading" class="loading" aria-hidden="true">Loading...</div>
+            <div id="results" class="results-grid" aria-live="polite"></div>
+
+            <div class="pagination" aria-label="Pagination">
+                <button id="prev-page" class="btn" disabled>Prev</button>
+                <span id="page-info" class="page-info">Page 1</span>
+                <button id="next-page" class="btn" disabled>Next</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-left">2025 © Emily Watkins</div>
+            <div class="footer-right">
+                <a class="footer-link footer-disabled" aria-disabled="true" tabindex="-1" title="Not available">Contact Us</a>
+                <button class="footer-link back-to-top" type="button">Back to Top</button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
